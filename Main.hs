@@ -4,22 +4,30 @@ import Control.Monad (unless)
 import Text.Printf (printf)
 
 short :: [a] -> Bool
-short = undefined 
+short lst = (length lst) < 3
 
 lovely :: [Int] -> Bool
-lovely = undefined 
+lovely lst = short lst || (lst !! 2) == 14
 
 rightTriangles :: [(Int, Int, Int)]
-rightTriangles = undefined 
+rightTriangles = map (\x -> (x,x,x)) (iterate (+1) 1)
 
 fizzBuzz :: [String]
-fizzBuzz = undefined 
+fizzBuzz = map (\x -> case () of
+    _ | x `mod` 15 == 0 -> "FizzBuzz"
+      | x `mod` 3 == 0  -> "Fizz"
+      | x `mod` 5 == 0  -> "Buzz"
+      | otherwise       -> show x) (iterate (+1) 1)
 
 ageOn :: String -> Float -> Float
-ageOn planet ageInSeconds = undefined 
+ageOn planet ageInSeconds = undefined
 
 isLeapYear :: Int -> Bool
-isLeapYear year = undefined 
+isLeapYear year = case () of
+  _ | year `mod` 400 == 0 -> True
+    | year `mod` 100 == 0 -> False
+    | year `mod` 4   == 0 -> True
+    | otherwise           -> False
 
 main = do
   runTests
